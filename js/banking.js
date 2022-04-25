@@ -1,11 +1,30 @@
+function getInputValue(){
+    const depositInput = document.getElementById('depositAmount');
+    const newdepoAmounttext = depositInput.value;
+    const newdepoAmount=parseFloat(newdepoAmounttext);
+    
+     // clear the deposit input field
+     depositInput.value='';
+
+    return newdepoAmount;
+}
+
+
+
+
+
 // handle deposit button and update deposit
     document.getElementById('deposit-btn').addEventListener('click',function(){
     // console.log('deposit button clicked')
     // finding the deposit amount
-    const depositInput = document.getElementById('depositAmount');
-    const newdepoAmounttext = depositInput.value;
-    const newdepoAmount=parseFloat(newdepoAmounttext);
+const newdepoAmount= getInputValue();
+
+    // const depositInput = document.getElementById('depositAmount');
+    // const newdepoAmounttext = depositInput.value;
+    // const newdepoAmount=parseFloat(newdepoAmounttext);
     // console.log(depoAmount);
+
+
     // getting the current depo value in deposit board
     const deposittotal=document.getElementById('totaldepo');
     // console.log(deposittotal.innerText);
@@ -26,9 +45,7 @@ const previousBalance = parseFloat(balanceTotal);
 const currentBalance= previousBalance+ newdepoAmount;
 balance.innerText=currentBalance;
 
-    // clear the deposit input field
-    depositInput.value='';
-
+   
 
 
 })
