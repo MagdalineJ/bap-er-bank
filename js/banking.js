@@ -21,11 +21,18 @@ function totalUpdate(totalFieldID, amount){
 
 }
 
+function currentBalance(){
+    const balance = document.getElementById('balance-total');
+    const balanceTotal= balance.innerText;
+    const previousBalance = parseFloat(balanceTotal);
+    return previousBalance;
+}
+
 function updateBalance(amount,isAdd){
     const balance = document.getElementById('balance-total');
-const balanceTotal= balance.innerText;
-const previousBalance = parseFloat(balanceTotal);
-
+// const balanceTotal= balance.innerText;
+// const previousBalance = parseFloat(balanceTotal);
+const previousBalance = currentBalance();
 if(isAdd == true){
     balance.innerText= previousBalance + amount;
      }
@@ -112,11 +119,14 @@ document.getElementById('withdraw-btn').addEventListener('click',function(){
 // balance.innerText=currentBalance;
 
 const withdrawAmount= getInputValue('withdrawAmount');
-if(withdrawAmount>0){
+const currentbalance=currentBalance();
+if(withdrawAmount>0 && withdrawAmount< currentbalance){
     totalUpdate('withdrawal',withdrawAmount);
     updateBalance(withdrawAmount,false);
-    
 }
+if(withdrawAmount>currentbalance)
+{console.log('you r bankrupt');}
 })
+
 
 
